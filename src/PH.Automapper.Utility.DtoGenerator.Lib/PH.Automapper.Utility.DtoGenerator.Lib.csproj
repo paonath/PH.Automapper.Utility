@@ -5,11 +5,34 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <None Remove="Templates\DtoClassTemplateFile.tt" />
+      <None Include="Templates\DtoClassTemplateFile.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>DtoClassTemplateFile.tt</DependentUpon>
+      </None>
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Templates" />
+      <PackageReference Include="System.CodeDom" Version="5.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Templates\DtoClassTemplateFile.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>DtoClassTemplateFile.tt</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="Templates\DtoClassTemplateFile.tt">
+        <Generator>TextTemplatingFilePreprocessor</Generator>
+        <LastGenOutput>DtoClassTemplateFile.cs</LastGenOutput>
+      </None>
     </ItemGroup>
 
 </Project>
