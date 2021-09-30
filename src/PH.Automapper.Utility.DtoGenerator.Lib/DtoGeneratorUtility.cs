@@ -10,8 +10,10 @@ namespace PH.Automapper.Utility.DtoGenerator.Lib
     {
         public string GenerateDto(Type sourceType, string dtoNameSpace, CustomModifier modifier = CustomModifier.Public)
         {
-            
-            throw new NotImplementedException();
+
+            var templateDto = InitFromType(sourceType, dtoNameSpace, modifier);
+            var textClass = templateDto.TransformText();
+            return textClass;
         }
 
         internal DtoClassTemplateFile InitFromType(Type sourceType, string dtoNameSpace,
@@ -34,6 +36,8 @@ namespace PH.Automapper.Utility.DtoGenerator.Lib
             foreach (var propertyInfo in infos)
             {
                 //check
+                //todo: implenets
+                l.Add(propertyInfo);
             }
 
 
