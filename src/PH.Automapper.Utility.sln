@@ -1,10 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PH.Automapper.Utility.DtoGenerator", "PH.Automapper.Utility.DtoGenerator\PH.Automapper.Utility.DtoGenerator.csproj", "{A3F73927-5CFB-4B6D-BFA6-2E72C01450F8}"
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PH.Automapper.Utility.DtoGenerator", "PH.Automapper.Utility.DtoGenerator\PH.Automapper.Utility.DtoGenerator.csproj", "{A3F73927-5CFB-4B6D-BFA6-2E72C01450F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PH.Automapper.Utility.DtoGenerator.Lib", "PH.Automapper.Utility.DtoGenerator.Lib\PH.Automapper.Utility.DtoGenerator.Lib.csproj", "{F1AE49EF-C267-443B-848E-3E024E79B257}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PH.Automapper.Utility.DtoGenerator.Lib", "PH.Automapper.Utility.DtoGenerator.Lib\PH.Automapper.Utility.DtoGenerator.Lib.csproj", "{F1AE49EF-C267-443B-848E-3E024E79B257}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PH.Automapper.Utility.DtoGenerator.Tests", "PH.Automapper.Utility.DtoGenerator.Tests\PH.Automapper.Utility.DtoGenerator.Tests.csproj", "{C237FD17-AE3B-405A-AACD-518817554B24}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PH.Automapper.Utility.DtoGenerator.Tests", "PH.Automapper.Utility.DtoGenerator.Tests\PH.Automapper.Utility.DtoGenerator.Tests.csproj", "{C237FD17-AE3B-405A-AACD-518817554B24}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PH.Automapper.Utility.WinApp", "PH.Automapper.Utility.WinApp\PH.Automapper.Utility.WinApp.csproj", "{7C256EB5-BFB3-4B1A-9B57-DDA38321155E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,5 +29,15 @@ Global
 		{C237FD17-AE3B-405A-AACD-518817554B24}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C237FD17-AE3B-405A-AACD-518817554B24}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C237FD17-AE3B-405A-AACD-518817554B24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C256EB5-BFB3-4B1A-9B57-DDA38321155E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C256EB5-BFB3-4B1A-9B57-DDA38321155E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C256EB5-BFB3-4B1A-9B57-DDA38321155E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C256EB5-BFB3-4B1A-9B57-DDA38321155E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3496F83D-F571-4E33-8019-68F08B17E93A}
 	EndGlobalSection
 EndGlobal
