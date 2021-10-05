@@ -19,9 +19,9 @@ namespace PH.Automapper.Utility.DtoGenerator.Lib.Templates
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "P:\Dev\Gitlab\PH.Automapper.Utility\src\PH.Automapper.Utility.DtoGenerator.Lib\Templates\DtoClassTemplateFile.tt"
+    #line 1 "P:\Dev\Gitlab\PH.Automapper.Utility\src\PH.Automapper.Utility.DtoGenerator.Lib\Templates\ProfileClassTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class DtoClassTemplateFile : DtoClassTemplateFileBase
+    public partial class ProfileClassTemplate : ProfileClassTemplateBase
     {
 #line hidden
         /// <summary>
@@ -29,65 +29,51 @@ namespace PH.Automapper.Utility.DtoGenerator.Lib.Templates
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("using System;\r\nusing System.Linq;\r\n\r\nnamespace ");
+            this.Write("using System;\r\nusing System.Linq;\r\nusing AutoMapper;\r\n\r\n\r\nnamespace ");
             
-            #line 10 "P:\Dev\Gitlab\PH.Automapper.Utility\src\PH.Automapper.Utility.DtoGenerator.Lib\Templates\DtoClassTemplateFile.tt"
+            #line 12 "P:\Dev\Gitlab\PH.Automapper.Utility\src\PH.Automapper.Utility.DtoGenerator.Lib\Templates\ProfileClassTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(NewNameSpaceName));
             
             #line default
             #line hidden
-            this.Write("\r\n{\r\n\t/// <summary>DTO for ");
-            
-            #line 12 "P:\Dev\Gitlab\PH.Automapper.Utility\src\PH.Automapper.Utility.DtoGenerator.Lib\Templates\DtoClassTemplateFile.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(OriginalTypeName));
-            
-            #line default
-            #line hidden
-            this.Write("</summary>\r\n\t");
-            
-            #line 13 "P:\Dev\Gitlab\PH.Automapper.Utility\src\PH.Automapper.Utility.DtoGenerator.Lib\Templates\DtoClassTemplateFile.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(GetModifier));
-            
-            #line default
-            #line hidden
-            this.Write(" class ");
-            
-            #line 13 "P:\Dev\Gitlab\PH.Automapper.Utility\src\PH.Automapper.Utility.DtoGenerator.Lib\Templates\DtoClassTemplateFile.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(NewTypeName));
-            
-            #line default
-            #line hidden
-            this.Write("\r\n\t{\r\n");
-            
-            #line 15 "P:\Dev\Gitlab\PH.Automapper.Utility\src\PH.Automapper.Utility.DtoGenerator.Lib\Templates\DtoClassTemplateFile.tt"
- foreach (PropertyInfo item in Properties)   
-   { 
-            
-            #line default
-            #line hidden
-            this.Write("\t\tpublic ");
-            
-            #line 17 "P:\Dev\Gitlab\PH.Automapper.Utility\src\PH.Automapper.Utility.DtoGenerator.Lib\Templates\DtoClassTemplateFile.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(item.PropertyType));
-            
-            #line default
-            #line hidden
-            this.Write(" ");
-            
-            #line 17 "P:\Dev\Gitlab\PH.Automapper.Utility\src\PH.Automapper.Utility.DtoGenerator.Lib\Templates\DtoClassTemplateFile.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(item.Name));
-            
-            #line default
-            #line hidden
-            this.Write(" {get; set;}\r\n\r\n");
-            
-            #line 19 "P:\Dev\Gitlab\PH.Automapper.Utility\src\PH.Automapper.Utility.DtoGenerator.Lib\Templates\DtoClassTemplateFile.tt"
- } // end of foreach
+            this.Write(@"
+{
+    /// <summary>
+    /// AutoMapper Profile class for <see cref=""Foo""/> and <see cref=""FooWritingDto""/> mapping
+    /// </summary>
+    /// <seealso cref=""AutoMapper.Profile"" />
+    internal class ProfileExample : AutoMapper.Profile
+    {
+        public ProfileExample()
+        {
+            CreateMap<Foo, FooWritingDto>()
 
+            #region Entity to Dto
             
-            #line default
-            #line hidden
-            this.Write("\t\r\n\t}\r\n}\r\n\r\n");
+            .ForMember(x => x.BarId, o => o.MapFrom(src => src.BarId))
+            .AfterMap((foo, dto, context) =>
+            {
+                //
+            })
+            
+            #endregion
+                   
+            .ReverseMap()
+
+            #region Dto to Entity
+
+            .ForMember(x => x.BarId, o => o.MapFrom(src => src.BarId))
+            .AfterMap((dto, foo, context) =>
+            {
+                //
+            });
+                
+            #endregion
+                   
+            }
+        }
+}
+");
             return this.GenerationEnvironment.ToString();
         }
     }
@@ -99,7 +85,7 @@ namespace PH.Automapper.Utility.DtoGenerator.Lib.Templates
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public class DtoClassTemplateFileBase
+    public class ProfileClassTemplateBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;

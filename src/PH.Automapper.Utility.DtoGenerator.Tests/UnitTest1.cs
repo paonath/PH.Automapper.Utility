@@ -1,6 +1,7 @@
 using System;
 using NUnit.Framework;
 using PH.Automapper.Utility.DtoGenerator.Lib;
+using AutoMapper;
 
 namespace PH.Automapper.Utility.DtoGenerator.Tests
 {
@@ -44,6 +45,49 @@ namespace PH.Automapper.Utility.DtoGenerator.Tests
             public Guid BarId { get; set; }
             public string Name { get; set; }
             public string FullName => $"{BarId} - {Name}";
+        }
+
+        internal class FooWritingDto
+        {
+            public int Id { get; set; }
+            public DateTime DateTime { get; set; }
+            public Guid BarId { get; set; }
+
+            
+        }
+
+        /// <summary>
+        /// AutoMapper Profile class for <see cref="Foo"/> and <see cref="FooWritingDto"/> mapping
+        /// </summary>
+        /// <seealso cref="AutoMapper.Profile" />
+        internal class ProfileExample : AutoMapper.Profile
+        {
+            public ProfileExample()
+            {
+                CreateMap<Foo, FooWritingDto>()
+
+                #region Entity to Dto
+
+                .ForMember(x => x.BarId, o => o.MapFrom(src => src.BarId))
+                .AfterMap((foo, dto, context) =>
+                {
+                    //
+                })
+                #endregion
+                   
+                    .ReverseMap()
+
+                #region Dto to Entity
+
+                .ForMember(x => x.BarId, o => o.MapFrom(src => src.BarId))
+                .AfterMap((dto, foo, context) =>
+                {
+                    //
+                });
+                
+                #endregion
+                   
+            }
         }
     }
 }

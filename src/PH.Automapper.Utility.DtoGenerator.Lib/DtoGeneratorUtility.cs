@@ -32,7 +32,10 @@ namespace PH.Automapper.Utility.DtoGenerator.Lib
         private PropertyInfo[] GetPropertiesFromType(Type sourceType)
         {
             var l     = new List<PropertyInfo>();
-            var infos = sourceType.GetProperties(BindingFlags.Public | BindingFlags.Instance);
+            var infos = sourceType.GetProperties(BindingFlags.Public | BindingFlags.Instance)
+                                  .Where(x => !x.PropertyType.IsAbstract && !x.PropertyType.IsClass)
+                                  .ToArray();
+
             foreach (var propertyInfo in infos)
             {
                 //check

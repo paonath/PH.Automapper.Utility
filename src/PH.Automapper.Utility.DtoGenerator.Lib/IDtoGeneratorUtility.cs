@@ -6,4 +6,10 @@ namespace PH.Automapper.Utility.DtoGenerator.Lib
     {
         string GenerateDto(Type sourceType, string dtoNameSpace, CustomModifier modifier = CustomModifier.Public);
     }
+
+    public interface IProfileGeneratorUtility
+    {
+        string GenerateProfile(Type sourceType, Type dtoType, string profileNameSpace,
+                               CustomModifier modifier = CustomModifier.Internal);
+    }
 }

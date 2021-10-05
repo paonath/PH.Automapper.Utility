@@ -10,11 +10,17 @@
         <AutoGen>True</AutoGen>
         <DependentUpon>DtoClassTemplateFile.tt</DependentUpon>
       </None>
+      <None Include="Templates\ProfileClassTemplate.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>ProfileClassTemplate.tt</DependentUpon>
+      </None>
     </ItemGroup>
 
 
 
     <ItemGroup>
+      <PackageReference Include="AutoMapper" Version="[10.0.0,)" />
       <PackageReference Include="System.CodeDom" Version="5.0.0" />
     </ItemGroup>
 
@@ -28,12 +34,21 @@
         <AutoGen>True</AutoGen>
         <DependentUpon>DtoClassTemplateFile.tt</DependentUpon>
       </Compile>
+      <Compile Update="Templates\ProfileClassTemplate.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>ProfileClassTemplate.tt</DependentUpon>
+      </Compile>
     </ItemGroup>
 
     <ItemGroup>
       <None Update="Templates\DtoClassTemplateFile.tt">
         <Generator>TextTemplatingFilePreprocessor</Generator>
         <LastGenOutput>DtoClassTemplateFile.cs</LastGenOutput>
+      </None>
+      <None Update="Templates\ProfileClassTemplate.tt">
+        <Generator>TextTemplatingFilePreprocessor</Generator>
+        <LastGenOutput>ProfileClassTemplate.cs</LastGenOutput>
       </None>
     </ItemGroup>
 
