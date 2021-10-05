@@ -7,24 +7,31 @@
 using System;
 using System.Linq;
 using AutoMapper;
+using <#= EntityNameSpace #>;
+using <#= DtoNameSpace #>;
 
 
-namespace <#= NewNameSpaceName #>
+namespace <#= ProfileNameSpaceName #>
 {
     /// <summary>
-    /// AutoMapper Profile class for <see cref="Foo"/> and <see cref="FooWritingDto"/> mapping
+    /// AutoMapper Profile class for <see cref="<#= EntityName #>"/> and <see cref="<#= DtoName #>"/> mapping
     /// </summary>
     /// <seealso cref="AutoMapper.Profile" />
-    internal class ProfileExample : AutoMapper.Profile
+    <#= GetModifier #> class <#= EntityName #>Profile : AutoMapper.Profile
     {
         public ProfileExample()
         {
-            CreateMap<Foo, FooWritingDto>()
+            CreateMap<<#= EntityName #>, <#= DtoName #>>()
 
             #region Entity to Dto
-            
-            .ForMember(x => x.BarId, o => o.MapFrom(src => src.BarId))
-            .AfterMap((foo, dto, context) =>
+
+<# foreach (PropertyInfo item in Properties)   
+   { #>
+            .ForMember(x => x.<#= item.Name #>, o => o.MapFrom(src => src.<#= item.Name #>))
+
+<# } 
+#>	            
+            .AfterMap((entity, dto, context) =>
             {
                 //
             })
@@ -36,7 +43,7 @@ namespace <#= NewNameSpaceName #>
             #region Dto to Entity
 
             .ForMember(x => x.BarId, o => o.MapFrom(src => src.BarId))
-            .AfterMap((dto, foo, context) =>
+            .AfterMap((dto, entity, context) =>
             {
                 //
             });

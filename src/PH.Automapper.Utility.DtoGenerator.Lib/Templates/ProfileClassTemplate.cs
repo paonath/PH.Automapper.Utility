@@ -29,29 +29,103 @@ namespace PH.Automapper.Utility.DtoGenerator.Lib.Templates
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("using System;\r\nusing System.Linq;\r\nusing AutoMapper;\r\n\r\n\r\nnamespace ");
+            this.Write("using System;\r\nusing System.Linq;\r\nusing AutoMapper;\r\nusing ");
             
-            #line 12 "P:\Dev\Gitlab\PH.Automapper.Utility\src\PH.Automapper.Utility.DtoGenerator.Lib\Templates\ProfileClassTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(NewNameSpaceName));
+            #line 10 "P:\Dev\Gitlab\PH.Automapper.Utility\src\PH.Automapper.Utility.DtoGenerator.Lib\Templates\ProfileClassTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(EntityNameSpace));
             
             #line default
             #line hidden
-            this.Write(@"
-{
-    /// <summary>
-    /// AutoMapper Profile class for <see cref=""Foo""/> and <see cref=""FooWritingDto""/> mapping
-    /// </summary>
-    /// <seealso cref=""AutoMapper.Profile"" />
-    internal class ProfileExample : AutoMapper.Profile
-    {
-        public ProfileExample()
-        {
-            CreateMap<Foo, FooWritingDto>()
-
-            #region Entity to Dto
+            this.Write(";\r\nusing ");
             
-            .ForMember(x => x.BarId, o => o.MapFrom(src => src.BarId))
-            .AfterMap((foo, dto, context) =>
+            #line 11 "P:\Dev\Gitlab\PH.Automapper.Utility\src\PH.Automapper.Utility.DtoGenerator.Lib\Templates\ProfileClassTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(DtoNameSpace));
+            
+            #line default
+            #line hidden
+            this.Write(";\r\n\r\n\r\nnamespace ");
+            
+            #line 14 "P:\Dev\Gitlab\PH.Automapper.Utility\src\PH.Automapper.Utility.DtoGenerator.Lib\Templates\ProfileClassTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(ProfileNameSpaceName));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n{\r\n    /// <summary>\r\n    /// AutoMapper Profile class for <see cref=\"");
+            
+            #line 17 "P:\Dev\Gitlab\PH.Automapper.Utility\src\PH.Automapper.Utility.DtoGenerator.Lib\Templates\ProfileClassTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(EntityName));
+            
+            #line default
+            #line hidden
+            this.Write("\"/> and <see cref=\"");
+            
+            #line 17 "P:\Dev\Gitlab\PH.Automapper.Utility\src\PH.Automapper.Utility.DtoGenerator.Lib\Templates\ProfileClassTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(DtoName));
+            
+            #line default
+            #line hidden
+            this.Write("\"/> mapping\r\n    /// </summary>\r\n    /// <seealso cref=\"AutoMapper.Profile\" />\r\n " +
+                    "   ");
+            
+            #line 20 "P:\Dev\Gitlab\PH.Automapper.Utility\src\PH.Automapper.Utility.DtoGenerator.Lib\Templates\ProfileClassTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetModifier));
+            
+            #line default
+            #line hidden
+            this.Write(" class ");
+            
+            #line 20 "P:\Dev\Gitlab\PH.Automapper.Utility\src\PH.Automapper.Utility.DtoGenerator.Lib\Templates\ProfileClassTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(EntityName));
+            
+            #line default
+            #line hidden
+            this.Write("Profile : AutoMapper.Profile\r\n    {\r\n        public ProfileExample()\r\n        {\r\n" +
+                    "            CreateMap<");
+            
+            #line 24 "P:\Dev\Gitlab\PH.Automapper.Utility\src\PH.Automapper.Utility.DtoGenerator.Lib\Templates\ProfileClassTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(EntityName));
+            
+            #line default
+            #line hidden
+            this.Write(", ");
+            
+            #line 24 "P:\Dev\Gitlab\PH.Automapper.Utility\src\PH.Automapper.Utility.DtoGenerator.Lib\Templates\ProfileClassTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(DtoName));
+            
+            #line default
+            #line hidden
+            this.Write(">()\r\n\r\n            #region Entity to Dto\r\n\r\n");
+            
+            #line 28 "P:\Dev\Gitlab\PH.Automapper.Utility\src\PH.Automapper.Utility.DtoGenerator.Lib\Templates\ProfileClassTemplate.tt"
+ foreach (PropertyInfo item in Properties)   
+   { 
+            
+            #line default
+            #line hidden
+            this.Write("            .ForMember(x => x.");
+            
+            #line 30 "P:\Dev\Gitlab\PH.Automapper.Utility\src\PH.Automapper.Utility.DtoGenerator.Lib\Templates\ProfileClassTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(item.Name));
+            
+            #line default
+            #line hidden
+            this.Write(", o => o.MapFrom(src => src.");
+            
+            #line 30 "P:\Dev\Gitlab\PH.Automapper.Utility\src\PH.Automapper.Utility.DtoGenerator.Lib\Templates\ProfileClassTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(item.Name));
+            
+            #line default
+            #line hidden
+            this.Write("))\r\n\r\n");
+            
+            #line 32 "P:\Dev\Gitlab\PH.Automapper.Utility\src\PH.Automapper.Utility.DtoGenerator.Lib\Templates\ProfileClassTemplate.tt"
+ } 
+
+            
+            #line default
+            #line hidden
+            this.Write(@"	            
+            .AfterMap((entity, dto, context) =>
             {
                 //
             })
@@ -63,7 +137,7 @@ namespace PH.Automapper.Utility.DtoGenerator.Lib.Templates
             #region Dto to Entity
 
             .ForMember(x => x.BarId, o => o.MapFrom(src => src.BarId))
-            .AfterMap((dto, foo, context) =>
+            .AfterMap((dto, entity, context) =>
             {
                 //
             });

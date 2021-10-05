@@ -11,8 +11,8 @@ namespace PH.Automapper.Utility.DtoGenerator.Tests
         [Test]
         public void Test1()
         {
-            var utlity = new DtoGenerator.Lib.DtoGeneratorUtility();
-            var fooDto = utlity.GenerateDto(typeof(Foo), "Sample.Dto", CustomModifier.Public);
+            var utility = new DtoGenerator.Lib.DtoGeneratorUtility();
+            var fooDto = utility.GenerateDto(typeof(Foo), "Sample.Dto", CustomModifier.Public);
             
             
             
@@ -20,7 +20,17 @@ namespace PH.Automapper.Utility.DtoGenerator.Tests
             
             Assert.Pass();
         }
-        
+
+        [Test]
+        public void GenerateFooDtoAndProfile()
+        {
+            var utility = new ProfileGeneratorUtility(new DtoGeneratorUtility());
+            var data    = utility.GenerateDtoAndProfile(typeof(Foo), "Profile.Dto", "Sample.Dto");
+
+            Assert.NotNull(data.Dto);
+            Assert.NotNull(data.Profile);
+        }
+
         
         
         internal class Foo

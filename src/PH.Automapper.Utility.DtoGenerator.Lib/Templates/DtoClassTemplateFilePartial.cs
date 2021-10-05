@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace PH.Automapper.Utility.DtoGenerator.Lib.Templates
 {
+
+
+
     public partial class DtoClassTemplateFile 
     {
         public PropertyInfo[] Properties { get; set; }

@@ -82,7 +82,7 @@ namespace PH.Automapper.Utility.DtoGenerator.Lib.Templates
             this.Write(" {get; set;}\r\n\r\n");
             
             #line 19 "P:\Dev\Gitlab\PH.Automapper.Utility\src\PH.Automapper.Utility.DtoGenerator.Lib\Templates\DtoClassTemplateFile.tt"
- } // end of foreach
+ } 
 
             
             #line default

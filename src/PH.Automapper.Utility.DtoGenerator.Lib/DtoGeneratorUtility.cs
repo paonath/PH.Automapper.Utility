@@ -8,25 +8,27 @@ namespace PH.Automapper.Utility.DtoGenerator.Lib
 {
     public class DtoGeneratorUtility : IDtoGeneratorUtility
     {
-        public string GenerateDto(Type sourceType, string dtoNameSpace, CustomModifier modifier = CustomModifier.Public)
+        public (string Dto, PropertyInfo[] Properties) GenerateDto(Type sourceType, string dtoNameSpace, CustomModifier modifier = CustomModifier.Public)
         {
 
-            var templateDto = InitFromType(sourceType, dtoNameSpace, modifier);
-            var textClass = templateDto.TransformText();
-            return textClass;
+            var templateDtoInternal = InitFromType(sourceType, dtoNameSpace, modifier);
+            var textClass = templateDtoInternal.dto.TransformText();
+            return (textClass, templateDtoInternal.properties);
         }
 
-        internal DtoClassTemplateFile InitFromType(Type sourceType, string dtoNameSpace,
-                                                   CustomModifier modifier = CustomModifier.Public)
+        internal (DtoClassTemplateFile dto, PropertyInfo[] properties ) InitFromType(Type sourceType, string dtoNameSpace,
+                                                                          CustomModifier modifier = CustomModifier.Public)
         {
-            var c = new DtoClassTemplateFile();
+            var props = GetPropertiesFromType(sourceType);
+
+            var c     = new DtoClassTemplateFile();
             c.Modifier         = modifier;
             c.NewNameSpaceName = dtoNameSpace;
             c.OriginalTypeName = sourceType.Name;
             c.NewTypeName      = $"{sourceType.Name}Dto";
-            c.Properties       = GetPropertiesFromType(sourceType);
+            c.Properties       = props;
 
-            return c;
+            return (c, props);
         }
 
         private PropertyInfo[] GetPropertiesFromType(Type sourceType)

@@ -16,7 +16,7 @@ namespace <#= NewNameSpaceName #>
    { #>
 		public <#= item.PropertyType #> <#= item.Name #> {get; set;}
 
-<# } // end of foreach
+<# } 
 #>	
 	}
 }
