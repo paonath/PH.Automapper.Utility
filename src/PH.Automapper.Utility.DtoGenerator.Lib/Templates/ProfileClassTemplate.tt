@@ -31,10 +31,7 @@ namespace <#= ProfileNameSpaceName #>
 
 <# } 
 #>	            
-            .AfterMap((entity, dto, context) =>
-            {
-                //
-            })
+            .AfterMap(AfterMapEntityToDto)
             
             #endregion
                    
@@ -43,13 +40,33 @@ namespace <#= ProfileNameSpaceName #>
             #region Dto to Entity
 
             .ForMember(x => x.BarId, o => o.MapFrom(src => src.BarId))
-            .AfterMap((dto, entity, context) =>
-            {
-                //
-            });
+            .AfterMap(AfterMapDtoToEntity);
                 
             #endregion
                    
             }
+
+            #region private methods and after maps
+
+
+            /// <summary>Afters the map entity to dto.</summary>
+            /// <param name="entity">The entity.</param>
+            /// <param name="dto">The dto.</param>
+            /// <param name="context">The context.</param>
+            private void AfterMapEntityToDto(<#= EntityName #> entity, <#= DtoName #> dto, ResolutionContext context)
+            {
+                //
+            }
+
+            /// <summary>Afters the map dto to entity.</summary>
+            /// <param name="dto">The dto.</param>
+            /// <param name="entity">The entity.</param>
+            /// <param name="context">The context.</param>
+            private void AfterMapDtoToEntity(<#= DtoName #> dto, <#= EntityName #> entity, ResolutionContext context)
+            {
+                //
+            }
+
+            #endregion
         }
 }

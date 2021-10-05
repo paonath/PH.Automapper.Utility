@@ -1,7 +1,9 @@
 using System;
+using System.Collections.Generic;
 using NUnit.Framework;
 using PH.Automapper.Utility.DtoGenerator.Lib;
 using AutoMapper;
+using AutoMapper.Configuration;
 
 namespace PH.Automapper.Utility.DtoGenerator.Tests
 {
@@ -31,8 +33,18 @@ namespace PH.Automapper.Utility.DtoGenerator.Tests
             Assert.NotNull(data.Profile);
         }
 
-        
-        
+        [Test]
+        public void GenerateFullMapping()
+        {
+            var utility = new InitMapperGeneratorUtility(new ProfileGeneratorUtility(new DtoGeneratorUtility()));
+            var data    = utility.GenerateFullMapping(new List<Type>() { typeof(Foo) }, "Profile.Dto", "Sample.Dto");
+
+            Assert.NotNull(data.MapperProvider);
+            Assert.NotNull(data.MapperProviderClassName);
+            Assert.IsNotEmpty(data.Dto);
+            Assert.IsNotEmpty(data.Profile);
+        }
+
         internal class Foo
         {
             public int Id { get; set; }
@@ -79,10 +91,7 @@ namespace PH.Automapper.Utility.DtoGenerator.Tests
                 #region Entity to Dto
 
                 .ForMember(x => x.BarId, o => o.MapFrom(src => src.BarId))
-                .AfterMap((foo, dto, context) =>
-                {
-                    //
-                })
+                .AfterMap(AfterMapEntityToDto)
                 #endregion
                    
                     .ReverseMap()
@@ -90,14 +99,50 @@ namespace PH.Automapper.Utility.DtoGenerator.Tests
                 #region Dto to Entity
 
                 .ForMember(x => x.BarId, o => o.MapFrom(src => src.BarId))
-                .AfterMap((dto, foo, context) =>
-                {
-                    //
-                });
+                .AfterMap(AfterMapDtoToEntity);
                 
                 #endregion
                    
             }
+
+
+            /// <summary>Afters the map entity to dto.</summary>
+            /// <param name="entity">The entity.</param>
+            /// <param name="dto">The dto.</param>
+            /// <param name="context">The context.</param>
+            private void AfterMapEntityToDto(Foo entity, FooWritingDto dto, ResolutionContext context)
+            {
+                //
+            }
+
+            /// <summary>Afters the map dto to entity.</summary>
+            /// <param name="dto">The dto.</param>
+            /// <param name="entity">The entity.</param>
+            /// <param name="context">The context.</param>
+            private void AfterMapDtoToEntity(FooWritingDto dto, Foo entity, ResolutionContext context)
+            {
+                //
+            }
+        }
+
+        /// <summary>
+        /// Static <see cref="IMapper"/> provider
+        /// </summary>
+        internal static class InitMapper 
+        {
+            /// <summary>Initializes a new instance of <see cref="Mapper"/>.</summary>
+            /// <returns>configured <see cref="IMapper"/></returns>
+            public static AutoMapper.IMapper Init()
+            {
+                var cfg = new MapperConfigurationExpression();
+
+                cfg.AddProfile<ProfileExample>();
+
+                var mapperConfig = new MapperConfiguration(cfg);
+                var m            = new Mapper(mapperConfig);
+                return m;
+            }
+
         }
     }
 }

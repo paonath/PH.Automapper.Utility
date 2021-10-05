@@ -12,7 +12,7 @@ namespace PH.Automapper.Utility.DtoGenerator.Lib
 
         public IDtoGeneratorUtility DtoGenerator { get; }
 
-        public (string Dto, string Profile) GenerateDtoAndProfile(Type sourceType, string profileNameSpace, string dtoNameSpace,
+        public (string Dto, string Profile, string ProfileClassName) GenerateDtoAndProfile(Type sourceType, string profileNameSpace, string dtoNameSpace,
                                                                   CustomModifier modifierProfile = CustomModifier.Internal,
                                                                   CustomModifier modifierDto = CustomModifier.Public)
         {
@@ -28,7 +28,8 @@ namespace PH.Automapper.Utility.DtoGenerator.Lib
             profileTpl.ProfileNameSpaceName = profileNameSpace;
 
             var profileText = profileTpl.TransformText();
-            return (dto.Dto, profileText);
+            var profileClassName = $"{sourceType.Name}Profile";  
+            return (dto.Dto, profileText, profileClassName);
 
         }
     }

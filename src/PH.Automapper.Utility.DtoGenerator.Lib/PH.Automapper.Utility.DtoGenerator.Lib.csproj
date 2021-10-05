@@ -10,6 +10,11 @@
         <AutoGen>True</AutoGen>
         <DependentUpon>DtoClassTemplateFile.tt</DependentUpon>
       </None>
+      <None Include="Templates\InitMapperTemplate.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>InitMapperTemplate.tt</DependentUpon>
+      </None>
       <None Include="Templates\ProfileClassTemplate.cs">
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
@@ -34,6 +39,11 @@
         <AutoGen>True</AutoGen>
         <DependentUpon>DtoClassTemplateFile.tt</DependentUpon>
       </Compile>
+      <Compile Update="Templates\InitMapperTemplate.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>InitMapperTemplate.tt</DependentUpon>
+      </Compile>
       <Compile Update="Templates\ProfileClassTemplate.cs">
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
@@ -45,6 +55,10 @@
       <None Update="Templates\DtoClassTemplateFile.tt">
         <Generator>TextTemplatingFilePreprocessor</Generator>
         <LastGenOutput>DtoClassTemplateFile.cs</LastGenOutput>
+      </None>
+      <None Update="Templates\InitMapperTemplate.tt">
+        <Generator>TextTemplatingFilePreprocessor</Generator>
+        <LastGenOutput>InitMapperTemplate.cs</LastGenOutput>
       </None>
       <None Update="Templates\ProfileClassTemplate.tt">
         <Generator>TextTemplatingFilePreprocessor</Generator>
