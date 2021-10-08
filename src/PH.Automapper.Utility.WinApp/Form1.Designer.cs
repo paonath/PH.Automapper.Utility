@@ -32,8 +32,8 @@ namespace PH.Automapper.Utility.WinApp
             this.label1 = new System.Windows.Forms.Label();
             this.txtAssembly = new System.Windows.Forms.TextBox();
             this.btnSelectAssembly = new System.Windows.Forms.Button();
-            this.listView1 = new System.Windows.Forms.ListView();
             this.label2 = new System.Windows.Forms.Label();
+            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.SuspendLayout();
             // 
             // label1
@@ -66,19 +66,6 @@ namespace PH.Automapper.Utility.WinApp
             this.btnSelectAssembly.UseVisualStyleBackColor = true;
             this.btnSelectAssembly.Click += new System.EventHandler(this.btnSelectAssembly_Click);
             // 
-            // listView1
-            // 
-            this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listView1.CheckBoxes = true;
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(158, 41);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(549, 297);
-            this.listView1.TabIndex = 3;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -88,13 +75,24 @@ namespace PH.Automapper.Utility.WinApp
             this.label2.TabIndex = 4;
             this.label2.Text = "Sources";
             // 
+            // checkedListBox1
+            // 
+            this.checkedListBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkedListBox1.FormattingEnabled = true;
+            this.checkedListBox1.Location = new System.Drawing.Point(158, 49);
+            this.checkedListBox1.Name = "checkedListBox1";
+            this.checkedListBox1.Size = new System.Drawing.Size(549, 202);
+            this.checkedListBox1.TabIndex = 5;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.checkedListBox1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.listView1);
             this.Controls.Add(this.btnSelectAssembly);
             this.Controls.Add(this.txtAssembly);
             this.Controls.Add(this.label1);
@@ -110,8 +108,8 @@ namespace PH.Automapper.Utility.WinApp
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtAssembly;
         private System.Windows.Forms.Button btnSelectAssembly;
-        private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.CheckedListBox checkedListBox1;
     }
 }
 

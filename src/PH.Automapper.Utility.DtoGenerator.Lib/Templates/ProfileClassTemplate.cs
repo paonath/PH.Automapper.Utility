@@ -53,11 +53,25 @@ namespace PH.Automapper.Utility.DtoGenerator.Lib.Templates
             this.Write("\r\n{\r\n    /// <summary>\r\n    /// AutoMapper Profile class for <see cref=\"");
             
             #line 17 "P:\Dev\Gitlab\PH.Automapper.Utility\src\PH.Automapper.Utility.DtoGenerator.Lib\Templates\ProfileClassTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(EntityNameSpace));
+            
+            #line default
+            #line hidden
+            this.Write(".");
+            
+            #line 17 "P:\Dev\Gitlab\PH.Automapper.Utility\src\PH.Automapper.Utility.DtoGenerator.Lib\Templates\ProfileClassTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(EntityName));
             
             #line default
             #line hidden
             this.Write("\"/> and <see cref=\"");
+            
+            #line 17 "P:\Dev\Gitlab\PH.Automapper.Utility\src\PH.Automapper.Utility.DtoGenerator.Lib\Templates\ProfileClassTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(DtoNameSpace));
+            
+            #line default
+            #line hidden
+            this.Write(".");
             
             #line 17 "P:\Dev\Gitlab\PH.Automapper.Utility\src\PH.Automapper.Utility.DtoGenerator.Lib\Templates\ProfileClassTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DtoName));
@@ -79,8 +93,14 @@ namespace PH.Automapper.Utility.DtoGenerator.Lib.Templates
             
             #line default
             #line hidden
-            this.Write("Profile : AutoMapper.Profile\r\n    {\r\n        public ProfileExample()\r\n        {\r\n" +
-                    "            CreateMap<");
+            this.Write("Profile : AutoMapper.Profile\r\n    {\r\n        public ");
+            
+            #line 22 "P:\Dev\Gitlab\PH.Automapper.Utility\src\PH.Automapper.Utility.DtoGenerator.Lib\Templates\ProfileClassTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(EntityName));
+            
+            #line default
+            #line hidden
+            this.Write("Profile()\r\n        {\r\n            CreateMap<");
             
             #line 24 "P:\Dev\Gitlab\PH.Automapper.Utility\src\PH.Automapper.Utility.DtoGenerator.Lib\Templates\ProfileClassTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(EntityName));
@@ -124,16 +144,40 @@ namespace PH.Automapper.Utility.DtoGenerator.Lib.Templates
             
             #line default
             #line hidden
-            this.Write(@"	            
-            .AfterMap(AfterMapEntityToDto)
+            this.Write("\t            \r\n            .AfterMap(AfterMapEntityToDto)\r\n            \r\n        " +
+                    "    #endregion\r\n                   \r\n            .ReverseMap()\r\n\r\n            #r" +
+                    "egion Dto to Entity\r\n\r\n");
             
-            #endregion
-                   
-            .ReverseMap()
+            #line 42 "P:\Dev\Gitlab\PH.Automapper.Utility\src\PH.Automapper.Utility.DtoGenerator.Lib\Templates\ProfileClassTemplate.tt"
+ foreach (PropertyInfo item in Properties)   
+   { 
+            
+            #line default
+            #line hidden
+            this.Write("            .ForMember(x => x.");
+            
+            #line 44 "P:\Dev\Gitlab\PH.Automapper.Utility\src\PH.Automapper.Utility.DtoGenerator.Lib\Templates\ProfileClassTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(item.Name));
+            
+            #line default
+            #line hidden
+            this.Write(", o => o.MapFrom(src => src.");
+            
+            #line 44 "P:\Dev\Gitlab\PH.Automapper.Utility\src\PH.Automapper.Utility.DtoGenerator.Lib\Templates\ProfileClassTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(item.Name));
+            
+            #line default
+            #line hidden
+            this.Write("))\r\n\r\n");
+            
+            #line 46 "P:\Dev\Gitlab\PH.Automapper.Utility\src\PH.Automapper.Utility.DtoGenerator.Lib\Templates\ProfileClassTemplate.tt"
+ } 
 
-            #region Dto to Entity
-
-            .ForMember(x => x.BarId, o => o.MapFrom(src => src.BarId))
+            
+            #line default
+            #line hidden
+            this.Write(@"	            
+      
             .AfterMap(AfterMapDtoToEntity);
                 
             #endregion
@@ -149,14 +193,14 @@ namespace PH.Automapper.Utility.DtoGenerator.Lib.Templates
             /// <param name=""context"">The context.</param>
             private void AfterMapEntityToDto(");
             
-            #line 56 "P:\Dev\Gitlab\PH.Automapper.Utility\src\PH.Automapper.Utility.DtoGenerator.Lib\Templates\ProfileClassTemplate.tt"
+            #line 62 "P:\Dev\Gitlab\PH.Automapper.Utility\src\PH.Automapper.Utility.DtoGenerator.Lib\Templates\ProfileClassTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(EntityName));
             
             #line default
             #line hidden
             this.Write(" entity, ");
             
-            #line 56 "P:\Dev\Gitlab\PH.Automapper.Utility\src\PH.Automapper.Utility.DtoGenerator.Lib\Templates\ProfileClassTemplate.tt"
+            #line 62 "P:\Dev\Gitlab\PH.Automapper.Utility\src\PH.Automapper.Utility.DtoGenerator.Lib\Templates\ProfileClassTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DtoName));
             
             #line default
@@ -172,20 +216,20 @@ namespace PH.Automapper.Utility.DtoGenerator.Lib.Templates
             /// <param name=""context"">The context.</param>
             private void AfterMapDtoToEntity(");
             
-            #line 65 "P:\Dev\Gitlab\PH.Automapper.Utility\src\PH.Automapper.Utility.DtoGenerator.Lib\Templates\ProfileClassTemplate.tt"
+            #line 71 "P:\Dev\Gitlab\PH.Automapper.Utility\src\PH.Automapper.Utility.DtoGenerator.Lib\Templates\ProfileClassTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DtoName));
             
             #line default
             #line hidden
             this.Write(" dto, ");
             
-            #line 65 "P:\Dev\Gitlab\PH.Automapper.Utility\src\PH.Automapper.Utility.DtoGenerator.Lib\Templates\ProfileClassTemplate.tt"
+            #line 71 "P:\Dev\Gitlab\PH.Automapper.Utility\src\PH.Automapper.Utility.DtoGenerator.Lib\Templates\ProfileClassTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(EntityName));
             
             #line default
             #line hidden
             this.Write(" entity, ResolutionContext context)\r\n            {\r\n                //\r\n         " +
-                    "   }\r\n\r\n            #endregion\r\n        }\r\n}\r\n");
+                    "   }\r\n\r\n            #endregion\r\n        }\r\n    }\r\n}\r\n");
             return this.GenerationEnvironment.ToString();
         }
     }

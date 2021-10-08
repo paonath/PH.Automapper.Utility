@@ -14,12 +14,12 @@ using <#= DtoNameSpace #>;
 namespace <#= ProfileNameSpaceName #>
 {
     /// <summary>
-    /// AutoMapper Profile class for <see cref="<#= EntityName #>"/> and <see cref="<#= DtoName #>"/> mapping
+    /// AutoMapper Profile class for <see cref="<#= EntityNameSpace #>.<#= EntityName #>"/> and <see cref="<#= DtoNameSpace #>.<#= DtoName #>"/> mapping
     /// </summary>
     /// <seealso cref="AutoMapper.Profile" />
     <#= GetModifier #> class <#= EntityName #>Profile : AutoMapper.Profile
     {
-        public ProfileExample()
+        public <#= EntityName #>Profile()
         {
             CreateMap<<#= EntityName #>, <#= DtoName #>>()
 
@@ -39,7 +39,13 @@ namespace <#= ProfileNameSpaceName #>
 
             #region Dto to Entity
 
-            .ForMember(x => x.BarId, o => o.MapFrom(src => src.BarId))
+<# foreach (PropertyInfo item in Properties)   
+   { #>
+            .ForMember(x => x.<#= item.Name #>, o => o.MapFrom(src => src.<#= item.Name #>))
+
+<# } 
+#>	            
+      
             .AfterMap(AfterMapDtoToEntity);
                 
             #endregion
@@ -69,4 +75,5 @@ namespace <#= ProfileNameSpaceName #>
 
             #endregion
         }
+    }
 }
